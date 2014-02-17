@@ -1,0 +1,33 @@
+# Steps for Hive demo
+
+# Step 1: upload the data we'll use to HDFS. This is
+# a list of names given to babies born each year from
+# 2000 through 2012 and comes from a public data set
+# available from the Social Security Administration.
+#
+hadoop fs -rm -r -f /user/training/hivedemo
+hadoop fs -mkdir /user/training/hivedemo
+hadoop fs -put names /user/training/hivedemo
+
+# Step 2: Create the table for this existing data.
+# This simply specifies the schema that tells Hive
+# the location and format of the data we added.
+# 
+cat <<EOT > create_table.sql
+DROP TABLE IF EXISTS names;
+
+CREATE EXTERNAL TABLE names 
+    (year INT, name STRING, gender STRING, qty INT)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    LOCATION '/user/training/hivedemo/names';
+EOT
+hive -f create_table.sql
+rm -f create_table.sql
+
+# Step 3: Run a couple of queries on the new table
+#
+echo "Calculating the number of unique baby names"
+hive -e "SELECT COUNT(DISTINCT name) FROM names"
+
+echo "Calculating five most popular names for girls that start with 'A'"
+hive -e "SELECT name, SUM(qty) AS total FROM names WHERE name LIKE 'A%' AND gender='F' GROUP BY name ORDER BY total DESC LIMIT 5"

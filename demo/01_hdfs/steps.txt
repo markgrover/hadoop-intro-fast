@@ -1,0 +1,56 @@
+# Steps for the HDFS demo
+
+# 0. Open a terminal window to this directory.
+
+# 1. List the contents of the root directory in HDFS
+# 
+hadoop fs -ls /
+
+# 2. Create a new directory named "fast14" below the 
+#    /user/training directory in HDFS. Since you're 
+#    currently logged in with the "training" user ID, 
+#    /user/training is your home directory in HDFS.
+#
+hadoop fs -mkdir /user/training/fast14
+
+# 3. Add the application.log file from the local directory
+#    named "data" to the new directory you created in HDFS
+#    during the previous step.
+#
+hadoop fs -put data/application.log /user/training/fast14
+
+# 4. List the contents of this new directory in HDFS.
+#
+hadoop fs -ls /user/training/fast14
+
+# 5. Add the entire local directory called "names" to the
+#    /user/training directory in HDFS. 
+#
+hadoop fs -put data/names /user/training
+
+# 6. Since /user/training is your home directory in HDFS,
+#    any command that does not have an absolute path is
+#    interpreted as relative to that directory. The next
+#    command will therefore list your home directory, and
+#    should show the items you've just added there.
+#
+hadoop fs -ls
+
+# 7. Delete a file from the "names" directory.
+# 
+hadoop fs -rm names/yob2002.txt
+
+# 8. Ensure this file is no longer in HDFS.
+#
+hadoop fs -ls names/yob2002.txt
+
+# 9. Finally, remove the entire names directory and all
+#    of its contents in HDFS.
+#
+hadoop fs -rm -r names
+
+# 10. List the fast14 directory again to ensure that the 
+#     application.log file is still there. We will use 
+#     that as input to our MapReduce job in the next demo.
+#
+hadoop fs -ls fast14

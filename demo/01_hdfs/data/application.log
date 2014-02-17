@@ -1,0 +1,7 @@
+2013-06-29 22:16:49.391 CDT INFO "This can wait"
+2013-06-29 22:16:52.143 CDT INFO "Blah blah blah"
+2013-06-29 22:16:54.276 CDT WARN "This seems bad"
+2013-06-29 22:16:57.471 CDT INFO "More blather"
+2013-06-29 22:17:01.290 CDT WARN "Not looking good"
+2013-06-29 22:17:03.812 CDT INFO "Fairly unimportant"
+2013-06-29 22:17:05.362 CDT ERROR "Out of memory!"

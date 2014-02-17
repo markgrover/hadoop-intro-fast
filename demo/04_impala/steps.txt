@@ -1,0 +1,16 @@
+# Steps for Impala demo
+# This reuses the data and table definition from the 
+# Hive demo, so we need only refresh the metadata.
+
+# Step 1: Make sure Impala knows about the table
+# created in Hive
+#
+impala-shell -q 'INVALIDATE METADATA'
+
+# Step 2: Run the same queries as in Hive.
+#
+echo "Calculating the number of unique baby names"
+impala-shell -q "SELECT COUNT(DISTINCT name) FROM names"
+
+echo "Calculating five most popular names for girls that start with 'A'"
+impala-shell -q "SELECT name, SUM(qty) AS total FROM names WHERE name LIKE 'A%' AND gender='F' GROUP BY name ORDER BY total DESC LIMIT 5"
