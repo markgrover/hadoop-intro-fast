@@ -1,3 +1,4 @@
+#!/bin/bash
 # Steps for the HDFS demo
 
 # 0. Open a terminal window to this directory.
