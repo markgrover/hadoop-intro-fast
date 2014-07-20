@@ -11,44 +11,45 @@ hadoop fs -ls /
 #    currently logged in with the "training" user ID, 
 #    /user/training is your home directory in HDFS.
 #
-sudo -u hdfs hadoop fs -mkdir -p /user/training/fast14
-sudo -u hdfs hadoop fs -chown -R cloudera /user/training
+sudo -u hdfs hadoop fs -mkdir -p /user/cloudera/fast14
+sudo -u hdfs hadoop fs -chown -R cloudera /user/cloudera
 # 3. Add the application.log file from the local directory
 #    named "data" to the new directory you created in HDFS
 #    during the previous step.
 #
 git clone https://github.com/markgrover/hadoop-intro-fast.git
 cd hadoop-intro-fast/demo/01_hdfs
-hadoop fs -put data/application.log /user/training/fast14
+hadoop fs -put data/application.log /user/cloudera/fast14
 
 # 4. List the contents of this new directory in HDFS.
 #
-hadoop fs -ls /user/training/fast14
+hadoop fs -ls /user/cloudera/fast14
 
 # 5. Add the entire local directory called "names" to the
 #    /user/training directory in HDFS. 
 #
-hadoop fs -put data/names /user/training
+hadoop fs -put data/names /user/cloudera
 
-# 6. List out the contents of the /user/training directory
+# 6. List out the contents of the /user/cloudera directory
+# which is also the home directory of the HDFS user
 #
-hadoop fs -ls -R /user/training
+hadoop fs -ls -R /user/cloudera
 
 # 7. Delete a file from the "names" directory.
 # 
-hadoop fs -rm /user/training/names/yob2002.txt
+hadoop fs -rm /user/cloudera/names/yob2002.txt
 
 # 8. Ensure this file is no longer in HDFS.
 #
-hadoop fs -ls /user/training/names/yob2002.txt
+hadoop fs -ls /user/cloudera/names/yob2002.txt
 
 # 9. Finally, remove the entire names directory and all
 #    of its contents in HDFS.
 #
-hadoop fs -rm -r /user/training/names
+hadoop fs -rm -r /user/cloudera/names
 
 # 10. List the fast14 directory again to ensure that the 
 #     application.log file is still there. We will use 
 #     that as input to our MapReduce job in the next demo.
 #
-hadoop fs -ls /user/training/fast14
+hadoop fs -ls /user/cloudera/fast14
