@@ -17,8 +17,6 @@ sudo -u hdfs hadoop fs -chown -R cloudera /user/cloudera
 #    named "data" to the new directory you created in HDFS
 #    during the previous step.
 #
-git clone https://github.com/markgrover/hadoop-intro-fast.git
-cd hadoop-intro-fast/demo/01_hdfs
 hadoop fs -put data/application.log /user/cloudera/fast14
 
 # 4. List the contents of this new directory in HDFS.
