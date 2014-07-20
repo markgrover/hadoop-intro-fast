@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 # Path of Hadoop streaming JAR library
 STREAMJAR=/usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-*.jar
