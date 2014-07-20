@@ -5,9 +5,9 @@
 # 2000 through 2012 and comes from a public data set
 # available from the Social Security Administration.
 #
-hadoop fs -rm -r -f /user/training/hivedemo
-hadoop fs -mkdir /user/training/hivedemo
-hadoop fs -put names /user/training/hivedemo
+hadoop fs -rm -r -f /user/cloudera/hivedemo
+hadoop fs -mkdir /user/cloudera/hivedemo
+hadoop fs -put names /user/cloudera/hivedemo
 
 # Step 2: Create the table for this existing data.
 # This simply specifies the schema that tells Hive
@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS names;
 CREATE EXTERNAL TABLE names 
     (year INT, name STRING, gender STRING, qty INT)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-    LOCATION '/user/training/hivedemo/names';
+    LOCATION '/user/cloudera/hivedemo/names';
 EOT
 hive -f create_table.sql
 rm -f create_table.sql
