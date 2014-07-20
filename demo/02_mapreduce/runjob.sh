@@ -4,7 +4,7 @@
 STREAMJAR=/usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming-*.jar
 
 # Directory in which we'll store job output
-OUTPUT=/user/training/loganalysis
+OUTPUT=/user/cloudera/loganalysis
 
 # Make sure we don't have output from a previous run.
 # The -r option removes the directory recursively, and
@@ -16,7 +16,7 @@ hadoop fs -rm -r -f $OUTPUT
 hadoop jar $STREAMJAR \
    -mapper mapper.py -file mapper.py  \
    -reducer reducer.py -file reducer.py  \
-   -input /user/training/fast14 \
+   -input /user/cloudera/fast14 \
    -output $OUTPUT
 
 # Copy all the output into a single local document
