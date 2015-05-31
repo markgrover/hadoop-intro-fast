@@ -3,8 +3,6 @@ hadoop-intro-fast
 
 This github repository contains code for some of the Intro to Hadoop presentations I have done.
 
-The slides.pdf file in particular corresponds to the full set of slides from Intro to Hadoop tutorial at Usenix FAST'14 in Santa Clara, CA.
-
 You would need a hadoop cluster in order to run the demo code. If you don't have a Hadoop cluster already and would like to get one, Cloudera's QuickStart VM is a very good first place. It's a single VM that contains all hadoop services installed on it. So, your QuickStat VM would be your one node Hadoop cluster.
 You can download the QuickStart VM from tiny.cloudera.com/quick-start
 
